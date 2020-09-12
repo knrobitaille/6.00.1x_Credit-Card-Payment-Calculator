@@ -1,12 +1,19 @@
-"""
-"""
+# Credit Card Payment Calculator
 
 print("Welcome to the credit card payment calculator. Based on your balance, interest rate, and payment pattern, this calculator will show you if you will pay off your balance in a year and how much interest you will have paid.")
 
 balance = float(input("Enter your credit card balance: "))
 
-annualInterestRate = float(input("Enter your credit card interest rate: "))
-monthlyInterestRate = annualInterestRate/12
+while True:
+    annualInterestRate = float(input("Enter your credit card interest rate as a decimal: "))
+    monthlyInterestRate = annualInterestRate/12
+    if annualInterestRate >= 1:
+        print("This rate is equal to "+str(annualInterestRate*100)+' %.')
+        interestConfirm = input("Do you want to continue with this rate? Please enter 'y' or 'n : ")
+        if interestConfirm in ["Y","y","yes","Yes","YES"]:
+            break
+    else:
+        break
 
 while True:
     paymentType = input("Do you plan to pay a fixed or variable amount? Please enter 'F' or 'V : ")
@@ -14,7 +21,7 @@ while True:
         break
 
 if paymentType == "V" or paymentType == "v":    
-    monthlyPaymentRate = float(input("Enter what percent of your balance you plan to pay each month: "))
+    monthlyPaymentRate = float(input("Enter what percent of your balance you plan to pay each month (as a decimal): "))
     
     month = 0
     b = balance
